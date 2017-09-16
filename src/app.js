@@ -1,10 +1,10 @@
 import fs from 'fs'
 import R from 'ramda'
-import http from 'http'
 import dotenv from 'dotenv'
 import Telegraf from 'telegraf'
 import logger from './logger'
 import updateLeetcodeTable, { pickOne, parseQuestion } from './updateLeetcodeTable'
+import keepCatAlive from './keepCatAlive'
 
 if (fs.existsSync('./.env')) {
   logger('Loading env from .env')
@@ -28,7 +28,7 @@ updateLeetcodeTable().then((leetcodeTable) => {
   app.command('meow', ({ reply, message: { from: {
     first_name: firstName = '奴才',
     last_name: lastName = '',
-  } } }) => reply(`喵！${lastName}${firstName}你叫我？`))
+  } } }) => reply(`喵！${firstName} ${lastName}你叫我？`))
   app.hears(/(hello)|(hi)/g, (ctx) => ctx.reply('Hey there!'))
   app.command('pickone', ({ message, ...ctx }) => {
     logger(JSON.stringify(message))
@@ -50,7 +50,4 @@ updateLeetcodeTable().then((leetcodeTable) => {
   app.startPolling()
 })
 
-http.createServer((req, res) => {
-  res.write('This is meow')
-  res.end()
-}).listen(process.env.PORT || 3000)
+keepCatAlive()
