@@ -13,7 +13,7 @@ const keepCatAlive = () => {
 
   // between 20 and 50 min prevent from hault
   setInterval(() => {
-    http.get(NOW_URL, () => {
+    http.get(NOW_URL.replace('https://', 'http://'), () => {
       console.log('I\'m alive meow')
     })
   }, (100000 * Math.random()) + 600000)

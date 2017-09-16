@@ -18,7 +18,6 @@ if (!BOT_TOKEN) throw Error('Missing bot token')
 if (!APP_NAME) throw Error('Missing app name')
 
 updateLeetcodeTable().then((leetcodeTable) => {
-  logger(BOT_TOKEN)
   const app = new Telegraf(BOT_TOKEN, { username: 'cena_cat_bot' })
 
   app.command('start', ({ from, reply }) => {
