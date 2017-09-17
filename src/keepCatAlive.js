@@ -16,7 +16,7 @@ const keepCatAlive = () => {
     http.get(NOW_URL.replace('https://', 'http://'), () => {
       console.log('I\'m alive meow')
     })
-  }, (100000 * Math.random()) + 600000)
+  }, (600000 * Math.random()) + 60000 * 5)
 }
 
 export default keepCatAlive
