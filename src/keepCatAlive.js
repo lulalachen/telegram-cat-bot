@@ -1,9 +1,11 @@
 import http from 'http'
+import logger from './logger'
 
 const {
   APP_NAME,
   PORT = 3000,
 } = process.env
+const APP_URL = `http://${APP_NAME}.herokuapp.com/`
 
 const keepCatAlive = () => {
   http.createServer((req, res) => {
@@ -13,9 +15,8 @@ const keepCatAlive = () => {
 
   // between 5 and 6 min prevent from hault
   setInterval(() => {
-    http.get(`http://${APP_NAME}.herokuapp.com/`, () => {
-      console.log('I\'m alive meow')
-    })
+    logger(`Fetching... ${APP_URL}`)
+    http.get(APP_URL, () => logger('I\'m alive meow'))
   }, (60000 * Math.random()) + (60000 * 5))
 }
 

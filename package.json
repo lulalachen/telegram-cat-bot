@@ -1,6 +1,6 @@
 {
   "name": "telegram_cat_bot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "./build/app.js",
   "scripts": {
@@ -9,9 +9,9 @@
     "watch": "nodemon --exec babel-node -- src/app.js --config nodemon.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/",
-    "postinstall": "npm run build",
     "prebuild": "rm -rf build",
-    "build": "babel src -d build"
+    "build": "babel src -d build",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "leetcode",
