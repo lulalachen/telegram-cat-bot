@@ -11,12 +11,12 @@ const keepCatAlive = () => {
     res.end('')
   }).listen(PORT)
 
-  // between 20 and 50 min prevent from hault
+  // between 5 and 6 min prevent from hault
   setInterval(() => {
-    http.get(NOW_URL.replace('https://', 'http://'), () => {
+    http.get('https', () => {
       console.log('I\'m alive meow')
     })
-  }, (600000 * Math.random()) + 60000 * 5)
+  }, (60000 * Math.random()) + (60000 * 5))
 }
 
 export default keepCatAlive
