@@ -13,7 +13,7 @@ if (fs.existsSync('./.env')) {
 
 // const s = new Sandbox()
 
-const { BOT_TOKEN, APP_NAME = 'pickonebot' } = process.env
+const { BOT_TOKEN, APP_NAME = 'telegram-cat-bot' } = process.env
 if (!BOT_TOKEN) throw Error('Missing bot token')
 if (!APP_NAME) throw Error('Missing app name')
 
@@ -39,6 +39,7 @@ updateLeetcodeTable().then((leetcodeTable) => {
       questionTitle,
       acceptRate,
     } = parseQuestion(pickedQuestion)
+    logger(`Replied with: ${questionTitle}, ${difficulty}`)
     ctx.reply(` 連結：${url}
 題目：${questionTitle}
 通過率：${acceptRate}
