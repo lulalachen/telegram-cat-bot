@@ -39,18 +39,18 @@ const postPickone = (req, res) => {
   }).then(() => {
     logger(`Respond with ${questionTitle} - ${url}`)
   })
-  res.status(200).send({ message: 'success', ...message })
+  res.status(200).send()
 }
 
 const postMeow = (req, res) => {
   const { user_name: userName = '' } = req.body
   fetch(WEBHOOK_URL, {
     method: 'POST',
-    body: JSON.stringify({ text: `喵! ${userName}你叫我？` }),
+    body: JSON.stringify({ text: `喵! <@${userName}> 你叫我？` }),
   }).then(() => {
     logger('Respond with meow')
   })
-  res.status(200).send({ message: 'success' })
+  res.status(200).send()
 }
 
 router.post('/meow', postMeow)

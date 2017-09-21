@@ -9,13 +9,12 @@ const makeSlackMessage = ({
   questionTitle,
   acceptRate,
   difficulty,
-  userName,
 }) => ({
   attachments: [
     {
       fallback: '加油！',
       color: getColor(difficulty),
-      pretext: `${userName}這題是${difficulty}的！:rocket: \n大家加油！:100:`,
+      pretext: `<!everyone> 這題是${difficulty}的！:rocket: \n大家加油！:100:`,
       title: questionTitle,
       title_link: url,
       fields: [

@@ -22,6 +22,8 @@ app.listen(PORT, (err) => {
 })
 
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
 app.use(apis)
 sayHelloTo('slack')
 
