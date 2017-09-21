@@ -14,7 +14,7 @@ const makeSlackMessage = ({
     {
       fallback: '加油！',
       color: getColor(difficulty),
-      pretext: `<!everyone> 這題是${difficulty}的！:rocket: \n大家加油！:100:`,
+      pretext: `這題是${difficulty}的！:rocket: \n大家加油！:100:\n<!everyone>`,
       title: questionTitle,
       title_link: url,
       fields: [
