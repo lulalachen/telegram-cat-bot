@@ -5,6 +5,7 @@ import apis from './apis'
 import { initTable } from './leetcodeTable'
 import runTelegramBot from './runTelegramBot'
 import keepCatAlive from './keepCatAlive'
+import sayHelloTo from './utils/sayHelloTo'
 
 const { PORT = 3000 } = process.env
 const app = express()
@@ -22,6 +23,7 @@ app.listen(PORT, (err) => {
 
 app.use(bodyParser.json())
 app.use(apis)
+sayHelloTo('slack')
 
 initTable()
 .then(() => {
